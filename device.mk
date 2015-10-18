@@ -76,7 +76,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/init.qcom.uicc.sh:system/etc/init.qcom.uicc.sh \
     $(LOCAL_PATH)/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     $(LOCAL_PATH)/etc/init.qcom.zram.sh:system/etc/init.qcom.zram.sh \
-    $(LOCAL_PATH)/etc/init.qcom8x26.btcta.sh:system/etc/init.qcom8x26.btcta.sh \
     $(LOCAL_PATH)/etc/izat.conf:system/etc/izat.conf \
     $(LOCAL_PATH)/etc/lowi.conf:system/etc/lowi.conf \
     $(LOCAL_PATH)/etc/quipc.conf:system/etc/quipc.conf \
