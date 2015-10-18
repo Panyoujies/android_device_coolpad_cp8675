@@ -115,6 +115,7 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/ramdisk/init.comm.rc:root/init.comm.rc \
     $(LOCAL_PATH)/ramdisk/init.class_main.sh:root/init.class_main.sh \
     $(LOCAL_PATH)/ramdisk/init.mdm.sh:root/init.mdm.sh \
     $(LOCAL_PATH)/ramdisk/init.qcom.bms.sh:root/init.qcom.bms.sh \
