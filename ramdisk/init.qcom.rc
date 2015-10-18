@@ -125,12 +125,36 @@ on boot
 
     setprop wifi.interface wlan0
 
-# LEWA BEGIN
     #create /data/system/batteryd
     mkdir /data/system 0755 system system
     mkdir /data/system/batteryd
     chown system system /data/system/batteryd
-# LEWA END
+
+# yulong begin add by zouzhangzhi
+    mkdir /data/clb
+    chown system system /data/clb
+    chmod 0666 /data/clb
+    chown system radio /dev/yl_params1 
+    chmod 0660 /dev/yl_params1
+# yulong end
+
+# yulong add permissions for led
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/blue/blink
+# add for touch firmware calibrate
+    chown system system /sys/class/touchscreen/touchscreen_dev/calibrate
+    chown system system /sys/class/touchscreen/touchscreen_dev/firware_update
+# yulong end
+
+#yulong add,  begin
+#for Gesture Wakeup
+    chown system system /sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl
+#yulong end
+# yulong add for vibrator
+    chown system system /sys/class/timed_output/vibrator/level
+    chown system system /sys/class/timed_output/vibrator/blank
+# yulong end
 
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
