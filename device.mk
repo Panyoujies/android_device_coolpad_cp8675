@@ -185,10 +185,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm8916
-
 # Filesystem
 PRODUCT_PACKAGES += \
     e2fsck \

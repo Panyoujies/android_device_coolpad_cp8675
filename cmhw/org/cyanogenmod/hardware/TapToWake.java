@@ -27,12 +27,11 @@ public class TapToWake {
     }
 
     public static boolean isEnabled()  {
-        return "0xcc,0:".equals(FileUtils.readOneLine(CONTROL_PATH));
+        return (Long.decode(FileUtils.readOneLine(CONTROL_PATH)) & 0x200) == 0x200;
     }
 
     public static boolean setEnabled(boolean state)  {
-        return FileUtils.writeLine(CONTROL_PATH, (state ? "on" : "off"));
+        return FileUtils.writeLine(CONTROL_PATH, (state ? "double_click=true" : "double_click=false"));
     }
 }
-
 
