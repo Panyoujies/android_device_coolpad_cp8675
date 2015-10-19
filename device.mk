@@ -285,11 +285,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=60 \
     persist.sys.usb.config=mtp \
-    ro.com.google.clientidbase=android-tcl \
-    ro.com.google.clientidbase.ms=android-tcl \
-    ro.com.google.clientidbase.am=android-tcl \
-    ro.com.google.clientidbase.gmm=android-tcl \
-    ro.com.google.clientidbase.yt=android-tcl \
     ro.com.android.dataroaming=true
 
 # Wifi
