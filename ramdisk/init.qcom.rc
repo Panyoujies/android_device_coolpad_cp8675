@@ -195,6 +195,13 @@ on boot
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
+    # for sensor, modify by hugh 2014-12-29
+    chmod 0660 /dev/yl_alsprox_sensor
+    chmod 0660 /dev/yl_acc_sensor
+    chown system system /dev/yl_alsprox_sensor
+    chown system system /dev/yl_acc_sensor
+    #end by hugh
+
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
@@ -261,12 +268,6 @@ on boot
 
     chown system system /sys/class/leds/singal-light/brightness
     chown system system /sys/class/leds/singal-light/blink
-    chown system system /dev/hotknot
-    chmod 0660 /dev/hotknot
-    chown system system /sys/gtp_test/rawdata
-    chmod 0660 /sys/gtp_test/rawdata
-    chown system system /sys/class/TP-UNLOCK/device/gesture
-    chmod 0660 /sys/class/TP-UNLOCK/device/gesture
 
     chmod 0660 /sys/class/input/input4/offset
     chown input system /sys/class/input/input4/offset
