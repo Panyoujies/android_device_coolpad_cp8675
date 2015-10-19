@@ -335,6 +335,17 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
+#add by kangxiong 2013.10.9
+    mkdir  /dev/camerainfo
+#z camera factory info
+   chmod 0666 /dev/camera0
+   chown radio system /dev/camera0
+   chmod 0660 /dev/camera1
+   chown radio system /dev/camera1
+   symlink /dev/camera0 /dev/camerainfo/camera0
+   symlink /dev/camera1 /dev/camerainfo/camera1
+#end
+
     chown system system /persist/usb_testmode
     chmod 0644 /persist/usb_testmode
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
