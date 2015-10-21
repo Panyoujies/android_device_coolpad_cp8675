@@ -349,7 +349,7 @@ case "$target" in
 		echo 1 > /sys/devices/system/cpu/cpu2/online
 	        echo 1 > /sys/devices/system/cpu/cpu3/online
 	    ;;
-           "239" | "241" | "263" | "268" | "269" | "270" | "271")
+           "239" | "241" | "263")
 		echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 		echo 10 > /sys/class/net/rmnet0/queues/rx-0/rps_cpus
             ;;
@@ -464,8 +464,8 @@ case "$target" in
            soc_id=`cat /sys/devices/system/soc/soc0/id`
         fi
 
-        # HMP scheduler settings for 8916, 8936, 8939, 8929
-        echo 3 > /proc/sys/kernel/sched_window_stats_policy
+        # HMP scheduler settings for 8916, 8936, 8939
+        echo 2 > /proc/sys/kernel/sched_window_stats_policy
 
         # Apply governor settings for 8916
         case "$soc_id" in
@@ -549,12 +549,12 @@ case "$target" in
 
         # Apply governor settings for 8939
         case "$soc_id" in
-            "239" | "241" | "263" | "268" | "269" | "270" | "271")
+            "239" | "241" | "263")
 
                 # HMP scheduler load tracking settings
                 echo 5 > /proc/sys/kernel/sched_ravg_hist_size
 
-                # HMP Task packing settings for 8939, 8929
+                # HMP Task packing settings for 8939
                 echo 20 > /proc/sys/kernel/sched_small_task
                 echo 30 > /proc/sys/kernel/sched_mostly_idle_load
                 echo 3 > /proc/sys/kernel/sched_mostly_idle_nr_run
@@ -562,12 +562,7 @@ case "$target" in
 		for devfreq_gov in /sys/class/devfreq/qcom,cpubw*/governor
 		do
 			 echo "bw_hwmon" > $devfreq_gov
-                         for cpu_io_percent in /sys/class/devfreq/qcom,cpubw*/bw_hwmon/io_percent
-                         do
-                                echo 20 > $cpu_io_percent
-                         done
 		done
-
 		for gpu_bimc_io_percent in /sys/class/devfreq/qcom,gpubw*/bw_hwmon/io_percent
 		do
 			 echo 40 > $gpu_bimc_io_percent
@@ -594,7 +589,7 @@ case "$target" in
                 echo "25000 800000:50000" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
                 echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
                 echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
-                echo 998400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+                echo 1113600 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
                 echo "1 800000:90" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
                 echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
@@ -602,12 +597,6 @@ case "$target" in
                 echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 
                 # enable thermal core_control now
-		echo 1 > /sys/module/msm_thermal/core_control/enabled
-
-		sleep 3
-		echo 0 > /sys/module/msm_thermal/core_control/enabled
-		echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-		echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
 		echo 1 > /sys/module/msm_thermal/core_control/enabled
 
                 # Bring up all cores online
@@ -620,25 +609,8 @@ case "$target" in
                 echo 1 > /sys/devices/system/cpu/cpu7/online
 
                 # HMP scheduler (big.Little cluster related) settings
-                echo 75 > /proc/sys/kernel/sched_upmigrate
+                echo 80 > /proc/sys/kernel/sched_upmigrate
                 echo 60 > /proc/sys/kernel/sched_downmigrate
-
-                sleep 3
-                # echo 0xffffffff to cpu scaling_max_freq, it will fall back to max available freq
-                echo 0 > /sys/module/msm_thermal/core_control/enabled
-                echo 4294967295 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-                echo 4294967295 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
-                echo 1 > /sys/module/msm_thermal/core_control/enabled
-
-                # cpu idle load threshold
-                echo 30 > /sys/devices/system/cpu/cpu0/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu1/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu2/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu3/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu4/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu5/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu6/sched_mostly_idle_load
-                echo 30 > /sys/devices/system/cpu/cpu7/sched_mostly_idle_load
             ;;
         esac
     ;;
@@ -825,7 +797,7 @@ case "$target" in
         fi
 
         # HMP scheduler settings for 8909 similiar to 8916
-        echo 3 > /proc/sys/kernel/sched_window_stats_policy
+        echo 2 > /proc/sys/kernel/sched_window_stats_policy
         echo 3 > /proc/sys/kernel/sched_ravg_hist_size
 
         # HMP Task packing settings for 8909 similiar to 8916
@@ -918,7 +890,7 @@ case "$target" in
            soc_id=`cat /sys/devices/system/soc/soc0/id`
         fi
         case $soc_id in
-            "239" | "241" | "263" | "268" | "269" | "270" | "271")
+            "239" | "241" | "263")
             setprop ro.min_freq_0 960000
             setprop ro.min_freq_4 800000
 	;;
@@ -927,7 +899,7 @@ case "$target" in
         ;;
         esac
         #start perfd after setprop
-        start perfd # start perfd on 8916, 8939 and 8929
+        start perfd # start perfd on 8916 and 8939
     ;;
     "msm8974")
         start mpdecision
