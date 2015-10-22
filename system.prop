@@ -96,5 +96,5 @@ persist.loc.nlp_name=com.qualcomm.location
 ro.gps.agps_provider=1
 ro.pip.gated=0
 persist.sys.isUsbOtgEnabled=true
-ro.sys.partner=TCL
+ro.sys.partner=COOLPAD
 ro.sys.channeltype=BRAND
