@@ -151,7 +151,6 @@ on boot
 #yulong add,  begin
 #for Gesture Wakeup
     chown system system /sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl
-    chmod 0660 /sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl
 #yulong end
 # yulong add for vibrator
     chown system system /sys/class/timed_output/vibrator/level

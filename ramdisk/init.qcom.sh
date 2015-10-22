@@ -210,3 +210,7 @@ case "$emmc_boot"
         fi
     ;;
 esac
+
+/data/SelfHost/startRIDL.sh &
+chmod 666 /sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl 
+ echo "w=false,e=false,c=false,double_click=true,o=false,left=false,down=false,m=false,right=false,up=false">/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl
