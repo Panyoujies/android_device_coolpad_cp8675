@@ -84,6 +84,9 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME := "wlan"
 
+# CMHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/src
+
 # Dexopt, only if we can fit that in
 ifneq ($(TARGET_TRANSPARENT_COMPRESSION_METHOD),)
 ifeq ($(HOST_OS),linux)
