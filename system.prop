@@ -25,7 +25,7 @@ persist.radio.multisim.config=dsds
 ro.telephony.default_network=22
 ro.telephony.default_cdma_sub=0
 persist.radio.apm_sim_not_pwdn=1
-ro.ril.force_eri_from_xml=tru
+ro.ril.force_eri_from_xml=true
 persist.radio.disable_flexmap=1
 telephony.lteOnCdmaDevice=1
 
